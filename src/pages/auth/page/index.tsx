@@ -4,8 +4,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
-// Тип для данных формы
-type FieldType = {
+type IFieldType = {
   email?: string;
   password?: string;
 };
@@ -13,12 +12,12 @@ type FieldType = {
 const AuthPage: React.FC = () => {
   const { token } = theme.useToken();
 
-  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  const onFinish: FormProps<IFieldType>['onFinish'] = (values) => {
     console.log('Success:', values);
     // Здесь будет логика входа
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  const onFinishFailed: FormProps<IFieldType>['onFinishFailed'] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -38,8 +37,13 @@ const AuthPage: React.FC = () => {
           </Title>
         </div>
 
-        <Form name="login" layout="vertical" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
-          <Form.Item<FieldType>
+        <Form<IFieldType>
+          name="login"
+          layout="vertical"
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off">
+          <Form.Item<IFieldType>
             label="Email"
             name="email"
             rules={[
@@ -49,7 +53,7 @@ const AuthPage: React.FC = () => {
             <Input prefix={<UserOutlined />} placeholder="Введите ваш email" size="large" />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item<IFieldType>
             label="Пароль"
             name="password"
             rules={[{ required: true, message: 'Пожалуйста, введите пароль!' }]}>

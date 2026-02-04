@@ -14,7 +14,7 @@ import eslintPluginImport from 'eslint-plugin-import';
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    extends: [js.configs.recommended, ...testing.configs.recommended, reactRedux.configs.recommended],
+    extends: [js.configs.recommended, ...testing.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
