@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { Button } from 'antd';
+import { AuthPage } from '@/pages/auth';
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Button>123</Button>} />
+        <Route path="/" element={<AuthPage />} />
       </Routes>
     </BrowserRouter>
   );
